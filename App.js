@@ -1,5 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native"
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import ModuleCrudlerScreen from "./src/components/screens/ModuleCrudlerScreen";
+import UserCrudlerScreen from "./src/components/screens/UserCrudlerScreen";
+
+const Drawer = createDrawerNavigator();
 
 export const App = () => {
   // Initialisations -------------------
@@ -10,20 +14,27 @@ export const App = () => {
 
   // View ------------------------------
   return (
-    <View style={styles.container}>
-      <Text>Hello World!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator 
+      initialRouteName="ModuleCrudlerScreen"
+      screenOptions={{
+        headerStyle: { backgroundColor: "black" },
+        headerTintColor: "white",
+      }}
+      >
+        <Drawer.Screen 
+        name="ModuleCrudlerScreen" 
+        component={ModuleCrudlerScreen} 
+        />
+
+        <Drawer.Screen 
+        name="UserCrudlerScreen" 
+        component={UserCrudlerScreen} 
+        />
+
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default App;
