@@ -25,11 +25,13 @@ export const App = () => {
         <Drawer.Screen 
         name="ModuleCrudlerScreen" 
         component={ModuleCrudlerScreen} 
+        options = {{title: "Module Crudler"}}
         />
 
         <Drawer.Screen 
         name="UserCrudlerScreen" 
         component={UserCrudlerScreen} 
+        options = {{title: "User Crudler"}}
         />
 
       </Drawer.Navigator>
