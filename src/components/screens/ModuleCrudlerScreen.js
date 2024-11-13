@@ -1,7 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { Screen } from 'react-native-screens';
 
 import initialModules from '../../data/modules.js';
+import ModuleList from "../entity/modules/ModuleList.js";
 
 export const ModuleCrudlerScreen = () => {
   // Initialisations -------------------
@@ -13,11 +14,11 @@ export const ModuleCrudlerScreen = () => {
 
   // View ------------------------------
   return (
-    <View style={styles.container}>
-      
-    </View>
+    <Screen>
+        <ModuleList modules = {initialModules}/>
+    </Screen>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
