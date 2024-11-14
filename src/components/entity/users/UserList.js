@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet } from "react-native";
 import UserItem from "./UserItem.js";
 
-const UserList = ({users}) => {
+const UserList = ({users, onSelect}) => {
     // Initialisations -------------------
 
     // State -----------------------------
@@ -17,6 +17,7 @@ const UserList = ({users}) => {
                     <UserItem
                         key = {user.UserID}
                         user = {user}
+                        onSelect = {onSelect}
                     />
                 );
             })}

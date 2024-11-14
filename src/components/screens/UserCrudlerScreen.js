@@ -4,17 +4,18 @@ import { Screen } from 'react-native-screens';
 import initialUsers from "../../data/users";
 import UserList from "../entity/users/UserList.js";
 
-export const UserCrudlerScreen = () => {
+export const UserCrudlerScreen = ({navigation}) => {
   // Initialisations -------------------
   const users = initialUsers;
   // State -----------------------------
 
   // Handlers --------------------------
+  const goToViewScreen = (user) => navigation.navigate("UserViewScreen", {user});
 
   // View ------------------------------
   return (
     <Screen>
-        <UserList users = {initialUsers}/>
+        <UserList users = {initialUsers} onSelect = {goToViewScreen}/>
     </Screen>
   );
 };

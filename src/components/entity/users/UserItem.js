@@ -1,20 +1,23 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
-const UserItem = ({user}) =>
+const UserItem = ({user, onSelect}) =>
 {
     // Initialisations -------------------
 
     // State -----------------------------
 
     // Handlers --------------------------
+    const handleSelect = () => onSelect(user);
 
     // View ------------------------------
     return (
+      <Pressable onPress = {handleSelect}>
         <View style={styles.item}>
             <Text style = {styles.text}>
                 {user.UserID} {user.UserFirstname} {user.UserLastname}
             </Text>
         </View>
+      </Pressable>
     );
 };
 

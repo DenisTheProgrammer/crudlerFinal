@@ -4,18 +4,19 @@ import { Screen } from 'react-native-screens';
 import initialModules from '../../data/modules.js';
 import ModuleList from "../entity/modules/ModuleList.js";
 
-export const ModuleCrudlerScreen = () => {
+export const ModuleCrudlerScreen = ({navigation}) => {
   // Initialisations -------------------
   const modules = initialModules;
 
   // State -----------------------------
 
   // Handlers --------------------------
+  const goToViewScreen = (module) => navigation.navigate("ModuleViewScreen", {module});
 
   // View ------------------------------
   return (
     <Screen>
-        <ModuleList modules = {initialModules}/>
+        <ModuleList modules = {initialModules} onSelect={goToViewScreen}/>
     </Screen>
   );
 };
