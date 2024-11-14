@@ -1,21 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Screen } from 'react-native-screens';
+
+import initialUsers from "../../data/users";
+import UserList from "../entity/users/UserList.js";
 
 export const UserCrudlerScreen = () => {
   // Initialisations -------------------
-
+  const users = initialUsers;
   // State -----------------------------
 
   // Handlers --------------------------
 
   // View ------------------------------
   return (
-    <View style={styles.container}>
-      <Text>User Crudler</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Screen>
+        <UserList users = {initialUsers}/>
+    </Screen>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

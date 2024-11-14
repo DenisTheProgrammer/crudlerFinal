@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Screen } from 'react-native-screens';
 
 import initialModules from '../../data/modules.js';

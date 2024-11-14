@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 
-const ModuleItem = ({module}) =>
+const UserItem = ({user}) =>
 {
     // Initialisations -------------------
 
@@ -12,7 +12,7 @@ const ModuleItem = ({module}) =>
     return (
         <View style={styles.item}>
             <Text style = {styles.text}>
-                {module.ModuleCode} {module.ModuleName}
+                {user.UserID} {user.UserFirstname} {user.UserLastname}
             </Text>
         </View>
     );
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
     },
   });
 
-  export default ModuleItem;
+  export default UserItem;
