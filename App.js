@@ -23,12 +23,12 @@ const ModuleCrudlerStack = () =>
         <Stack.Screen
           name = "ModuleCrudlerScreen"
           component={ModuleCrudlerScreen}
-          options = {{title: "Module Crudler"}}
+          options = {{title: ""}}
         />
         <Stack.Screen
           name = "ModuleViewScreen"
           component={ModuleViewScreen}
-          options = {{title: "Module View"}}
+          options = {{title: ""}}
         />
   
       </Stack.Navigator>
@@ -49,12 +49,12 @@ const ModuleCrudlerStack = () =>
           <Stack.Screen
             name = "UserCrudlerScreen"
             component={UserCrudlerScreen}
-            options = {{title: "User Crudler"}}
+            options = {{title: ""}}
           />
           <Stack.Screen
             name = "UserViewScreen"
             component={UserViewScreen}
-            options = {{title: "User View"}}
+            options = {{title: ""}}
           />
   
         </Stack.Navigator>
