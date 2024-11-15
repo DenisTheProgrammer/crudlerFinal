@@ -3,6 +3,8 @@ import { Screen } from 'react-native-screens';
 
 import initialModules from '../../data/modules.js';
 import ModuleList from "../entity/modules/ModuleList.js";
+import { ButtonTray, Button } from '../UI/Button.js';
+import Icons from '../UI/Icons.js';
 
 export const ModuleCrudlerScreen = ({navigation}) => {
   // Initialisations -------------------
@@ -12,22 +14,21 @@ export const ModuleCrudlerScreen = ({navigation}) => {
 
   // Handlers --------------------------
   const goToViewScreen = (module) => navigation.navigate("ModuleViewScreen", {module});
+  const goToAddScreen = () => navigation.navigate("ModuleAddScreen");
 
   // View ------------------------------
   return (
     <Screen>
-        <ModuleList modules = {initialModules} onSelect={goToViewScreen}/>
+      <ButtonTray>
+        <Button label = "Add" icon = {<Icons.Add/>} onClick = {goToAddScreen}/>
+      </ButtonTray>
+      <ModuleList modules = {modules} onSelect={goToViewScreen}/>
     </Screen>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  container: {},
 });
 
 export default ModuleCrudlerScreen;

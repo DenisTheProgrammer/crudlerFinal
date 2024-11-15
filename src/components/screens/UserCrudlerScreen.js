@@ -3,6 +3,8 @@ import { Screen } from 'react-native-screens';
 
 import initialUsers from "../../data/users";
 import UserList from "../entity/users/UserList.js";
+import { Button, ButtonTray } from '../UI/Button.js';
+import Icons from '../UI/Icons.js';
 
 export const UserCrudlerScreen = ({navigation}) => {
   // Initialisations -------------------
@@ -11,22 +13,21 @@ export const UserCrudlerScreen = ({navigation}) => {
 
   // Handlers --------------------------
   const goToViewScreen = (user) => navigation.navigate("UserViewScreen", {user});
+  const goToAddScreen = () => navigation.navigate("UserAddScreen");
 
   // View ------------------------------
   return (
     <Screen>
-        <UserList users = {initialUsers} onSelect = {goToViewScreen}/>
+      <ButtonTray>
+        <Button label = "Add" icon = {<Icons.Add/>} onClick = {goToAddScreen} />
+      </ButtonTray>
+      <UserList users = {users} onSelect = {goToViewScreen}/>
     </Screen>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  container: {},
 });
 
 export default UserCrudlerScreen;
