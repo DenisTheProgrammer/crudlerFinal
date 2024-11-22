@@ -1,15 +1,24 @@
-import { View, Text } from "react-native";
+import { StyleSheet } from "react-native";
+import Screen from "../layout/Screen.js";
+import UserForm from "../entity/users/UserForm.js";
 
-const UserAddScreen = () => {
+const UserAddScreen = ({navigation, route}) => {
     // Initialisations -------------------
-    // State -----------------------------
+    const {onAdd} = route.params;
+
+    //State ------------------------------
+
     // Handlers --------------------------
-    // View ------------------------------
+    const handleCancel = navigation.goBack;
+
+    //View -------------------------------
     return (
-        <View>
-            <Text>Add User Screen</Text>
-        </View>
+        <Screen>
+            <UserForm onSubmit={onAdd} onCancel={handleCancel} />
+        </Screen>
     );
 };
+
+const styles = StyleSheet.create({});
 
 export default UserAddScreen;

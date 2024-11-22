@@ -85,31 +85,32 @@ Form.InputSelect = InputSelect;
 //Styles
 const styles = StyleSheet.create({
     formContainer: {
-      gap: 10,
+        flex: 1,
+        gap: 10,
     },
     formItems: {
-      gap: 5,
+        gap: 5,
     },
     itemLabel: {
-      color: "grey",
-      fontSize: 16,
-      marginBottom: 5,
+        color: "grey",
+        fontSize: 16,
+        marginBottom: 5,
     },
     itemTextInput: {
-      height: 50,
-      paddingLeft: 10,
-      fontSize: 16,
-      backgroundColor: "white",
-      borderRadius: 7,
-      borderWidth: 1,
-      borderColor: "lightgray",
+        height: 50,
+        paddingLeft: 10,
+        fontSize: 16,
+        backgroundColor: "white",
+        borderRadius: 7,
+        borderWidth: 1,
+        borderColor: "lightgray",
     },
     itemPickerStyle: {
-      //height: 50,
-      backgroundColor: "whitesmoke",
+        //height: 50,
+        backgroundColor: "whitesmoke",
     },
     itemPickerPromptStyle: {
-      color: "gray",
+        color: "gray",
     },
   });
   

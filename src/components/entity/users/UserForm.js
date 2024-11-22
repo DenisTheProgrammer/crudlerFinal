@@ -6,8 +6,8 @@ import Form from "../../UI/Form.js";
 const defaultUser = 
 {
     UserID : null,
-    UserFirstName : null,
-    UserLastName : null,
+    UserFirstname : null,
+    UserLastname : null,
     UserEmail : null,
     UserImageURL : null,
     UserType : null,
@@ -16,7 +16,7 @@ const defaultUser =
 
 const UserForm = ({originalUser, onSubmit, onCancel }) => {
     // Initialisations --------------------------
-    defaultUser.UserID = Math.floor(100000 + Math.random() * 900000);
+    defaultUser.UserID = Math.floor(100 + Math.random() * 900);
     defaultUser.UserImageURL = 'https://images.generated.photos/1zzVOGo2BC7zlIbuqtT9E03KbcRrCFw0CeIkCRH-pQo/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTU2NTI4LmpwZw.jpg';
 
     const types = [
@@ -35,7 +35,7 @@ const UserForm = ({originalUser, onSubmit, onCancel }) => {
 
     //Handlers -----------------------------------
     const handleChange = (field, value) => setUser({...user, [field]:value});
-    const handleSubmit = () => onSubmit(module);
+    const handleSubmit = () => onSubmit(user);
 
     //View ---------------------------------------
     const submitLabel = originalUser? "Modify" : "Add";
@@ -50,14 +50,14 @@ const UserForm = ({originalUser, onSubmit, onCancel }) => {
         >
             <Form.InputText
                 label = "First Name"
-                value = {user.UserFirstName}
-                onChange = {(value)=> handleChange("UserFirstName", value)}
+                value = {user.UserFirstname}
+                onChange = {(value)=> handleChange("UserFirstname", value)}
             />
 
             <Form.InputText
                 label = "Last Name"
-                value = {user.UserLastName}
-                onChange = {(value)=> handleChange("UserLastName", value)}
+                value = {user.UserLastname}
+                onChange = {(value)=> handleChange("UserLastname", value)}
             />
 
             <Form.InputText
@@ -87,6 +87,7 @@ const UserForm = ({originalUser, onSubmit, onCancel }) => {
                 value = {user.UserYear}
                 onChange = {(value)=> handleChange("UserYear", value)}
             />
+           
 
         </Form>
     );

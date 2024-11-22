@@ -5,15 +5,26 @@ import initialUsers from "../../data/users";
 import UserList from "../entity/users/UserList.js";
 import { Button, ButtonTray } from '../UI/Button.js';
 import Icons from '../UI/Icons.js';
+import { useState } from 'react';
 
 export const UserCrudlerScreen = ({navigation}) => {
   // Initialisations -------------------
-  const users = initialUsers;
-  // State -----------------------------
 
+  // State -----------------------------
+  const [users, setUsers] = useState(initialUsers);
   // Handlers --------------------------
+  const handleAdd = (user) => setUsers([...users, user]);
+
+  const onAdd = (user) =>
+  {
+    handleAdd(user);
+    console.log(user);
+    navigation.goBack();
+  }
+
+
   const goToViewScreen = (user) => navigation.navigate("UserViewScreen", {user});
-  const goToAddScreen = () => navigation.navigate("UserAddScreen");
+  const goToAddScreen = () => navigation.navigate("UserAddScreen", {onAdd});
 
   // View ------------------------------
   return (
