@@ -5,7 +5,7 @@ const users = [
     UserLastname: 'Jones',
     UserEmail: 'Ku06696@kingston.ac.uk',
     UserImageURL:
-    'https://generated.photos/face/neutral-white-middle-aged-male-with-short-gray-hair-and-blue-eyes--5e6849b06d3b380006e3c5cb',
+    'https://images.generated.photos/JaFMncOoAFAerEyw_xWIeFMjzgfkkseT_oGEyP6CgQI/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzI5MTY3LmpwZw.jpg',
     UserType: 'Staff',
     UserYear: null,
     },
