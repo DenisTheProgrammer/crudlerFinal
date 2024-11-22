@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Screen } from 'react-native-screens';
+import Screen from "../layout/Screen.js";
 
 import initialUsers from "../../data/users";
 import UserList from "../entity/users/UserList.js";

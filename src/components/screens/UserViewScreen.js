@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { Screen } from "react-native-screens";
+import Screen from "../layout/Screen.js";
 import UserView from "../entity/users/UserView";
 
 export const UserViewScreen = ({navigation, route}) => {

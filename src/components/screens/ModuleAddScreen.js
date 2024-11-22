@@ -1,15 +1,24 @@
-import { View, Text } from "react-native";
+import { StyleSheet } from "react-native";
+import Screen from "../layout/Screen.js";
+import ModuleForm from "../entity/modules/ModuleForm.js";
 
-const ModuleAddScreen = () => {
+const ModuleAddScreen = ({navigation, route}) => {
     // Initialisations -------------------
-    // State -----------------------------
+    const {onAdd} = route.params;
+
+    //State ------------------------------
+
     // Handlers --------------------------
-    // View ------------------------------
+    const handleCancel = navigation.goBack;
+
+    //View -------------------------------
     return (
-        <View>
-            <Text>Add Module Screen</Text>
-        </View>
+        <Screen>
+            <ModuleForm onSubmit={onAdd} onCancel={handleCancel} />
+        </Screen>
     );
 };
+
+const styles = StyleSheet.create({});
 
 export default ModuleAddScreen;
