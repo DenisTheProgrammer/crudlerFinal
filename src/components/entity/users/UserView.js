@@ -3,7 +3,7 @@ import FullWidthImage from "react-native-fullwidth-image";
 import { Button, ButtonTray } from "../../UI/Button.js";
 import Icons from "../../UI/Icons.js";
 
-const UserView = ({user}) => 
+const UserView = ({user, onDelete}) => 
 {
     // Initialisations --------------------------
     // State ------------------------------------
@@ -11,8 +11,16 @@ const UserView = ({user}) =>
 
     const onModify = () => Alert.alert("Modify Warning");
 
-    const onDelete = () => Alert.alert("Delete Warning");
+    const handleDelete = () => onDelete(user);
 
+    const requestDelete = () => Alert.alert(
+      "Delete Warning",
+      `Are you sure that you want to delete user ${user.UserID} ${user.UserFirstname} ${user.UserLastname}?`,
+      [
+        {text: "Cancel"},
+        {text: "Delete", onPress: handleDelete}
+      ]
+    );
     // View ----------------------------------
     return (
         <View style={styles.container}>
@@ -39,7 +47,7 @@ const UserView = ({user}) =>
                 label= "Delete"
                 styleButton={{backgroundColor : "mistyrose"}}
                 styleLabel = {{color: "red"}}
-                onClick = {onDelete}
+                onClick = {requestDelete}
                 />
             </ButtonTray>
         </View>

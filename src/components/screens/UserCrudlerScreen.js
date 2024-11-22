@@ -14,16 +14,25 @@ export const UserCrudlerScreen = ({navigation}) => {
   const [users, setUsers] = useState(initialUsers);
   // Handlers --------------------------
   const handleAdd = (user) => setUsers([...users, user]);
+  const handleDelete = (user) =>
+  {
+    setUsers(users.filter((item) => item.UserID !== user.UserID));
+  }
 
   const onAdd = (user) =>
   {
     handleAdd(user);
-    console.log(user);
+    navigation.goBack();
+  }
+
+  const onDelete = (user) =>
+  {
+    handleDelete(user);
     navigation.goBack();
   }
 
 
-  const goToViewScreen = (user) => navigation.navigate("UserViewScreen", {user});
+  const goToViewScreen = (user) => navigation.navigate("UserViewScreen", {user, onDelete});
   const goToAddScreen = () => navigation.navigate("UserAddScreen", {onAdd});
 
   // View ------------------------------

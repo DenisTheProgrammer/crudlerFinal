@@ -5,7 +5,7 @@ import UserView from "../entity/users/UserView";
 
 export const UserViewScreen = ({navigation, route}) => {
   // Initialisations -------------------
-  const {user} = route.params;
+  const {user, onDelete} = route.params;
   // State -----------------------------
 
   // Handlers --------------------------
@@ -13,7 +13,7 @@ export const UserViewScreen = ({navigation, route}) => {
   // View ------------------------------
   return (
     <Screen>
-      <UserView user = {user}/>
+      <UserView user = {user} onDelete = {onDelete}/>
     </Screen>
   );
 };
