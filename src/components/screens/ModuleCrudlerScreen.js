@@ -15,6 +15,10 @@ export const ModuleCrudlerScreen = ({navigation}) => {
 
   // Handlers --------------------------
   const handleAdd = (module) => setModules([...modules, module]);
+  const handleDelete = (module) =>
+  {
+    setModules(modules.filter((item) => item.ModuleID !== module.ModuleID));
+  }
 
   const onAdd = (module) =>
   {
@@ -22,8 +26,14 @@ export const ModuleCrudlerScreen = ({navigation}) => {
     navigation.goBack();
   }
 
+  const onDelete = (module) =>
+  {
+    handleDelete(module);
+    navigation.goBack();
+  };
 
-  const goToViewScreen = (module) => navigation.navigate("ModuleViewScreen", {module});
+
+  const goToViewScreen = (module) => navigation.navigate("ModuleViewScreen", {module, onDelete});
   const goToAddScreen = () => navigation.navigate("ModuleAddScreen", {onAdd});
 
   // View ------------------------------
