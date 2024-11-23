@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import ModuleCrudlerScreen from "./src/components/screens/ModuleCrudlerScreen";
 import ModuleViewScreen from "./src/components/screens/ModuleViewScreen";
 import ModuleAddScreen from "./src/components/screens/ModuleAddScreen";
+import ModuleModifyScreen from "./src/components/screens/ModuleModifyScreen";
 
 import UserCrudlerScreen from "./src/components/screens/UserCrudlerScreen";
 import UserViewScreen from "./src/components/screens/UserViewScreen";
@@ -39,6 +40,11 @@ const ModuleCrudlerStack = () =>
           name = "ModuleAddScreen"
           component={ModuleAddScreen}
           options = {{title: "Module Add"}}
+        />
+        <Stack.Screen
+          name = "ModuleModifyScreen"
+          component={ModuleModifyScreen}
+          options = {{title: "Module Modify"}}
         />
   
       </Stack.Navigator>

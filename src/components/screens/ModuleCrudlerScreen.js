@@ -19,12 +19,16 @@ export const ModuleCrudlerScreen = ({navigation}) => {
   {
     setModules(modules.filter((item) => item.ModuleID !== module.ModuleID));
   }
+  const handleModify = (updatedModule) => {
+    setModules(modules.map((module) => (module.ModuleID === updatedModule.ModuleID) ? updatedModule : module));
+    console.log(module)
+  }
 
   const onAdd = (module) =>
   {
     handleAdd(module);
     navigation.goBack();
-  }
+  };
 
   const onDelete = (module) =>
   {
@@ -32,8 +36,14 @@ export const ModuleCrudlerScreen = ({navigation}) => {
     navigation.goBack();
   };
 
+  const onModify = (module) =>
+  {
+    handleModify(module);
+    navigation.popToTop();
+  }
 
-  const goToViewScreen = (module) => navigation.navigate("ModuleViewScreen", {module, onDelete});
+
+  const goToViewScreen = (module) => navigation.navigate("ModuleViewScreen", {module, onDelete, onModify});
   const goToAddScreen = () => navigation.navigate("ModuleAddScreen", {onAdd});
 
   // View ------------------------------
