@@ -10,6 +10,7 @@ import ModuleModifyScreen from "./src/components/screens/ModuleModifyScreen";
 import UserCrudlerScreen from "./src/components/screens/UserCrudlerScreen";
 import UserViewScreen from "./src/components/screens/UserViewScreen";
 import UserAddScreen from "./src/components/screens/UserAddScreen";
+import UserModifyScreen from "./src/components/screens/UserModifyScreen";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -77,6 +78,11 @@ const ModuleCrudlerStack = () =>
             name = "UserAddScreen"
             component={UserAddScreen}
             options = {{title: "User Add"}}
+          />
+          <Stack.Screen
+            name = "UserModifyScreen"
+            component={UserModifyScreen}
+            options = {{title: "User Modify"}}
           />
   
         </Stack.Navigator>

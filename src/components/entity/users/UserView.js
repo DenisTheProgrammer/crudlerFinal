@@ -3,13 +3,11 @@ import FullWidthImage from "react-native-fullwidth-image";
 import { Button, ButtonTray } from "../../UI/Button.js";
 import Icons from "../../UI/Icons.js";
 
-const UserView = ({user, onDelete}) => 
+const UserView = ({user, onDelete, onModify}) => 
 {
     // Initialisations --------------------------
     // State ------------------------------------
     // Handlers ---------------------------------
-
-    const onModify = () => Alert.alert("Modify Warning");
 
     const handleDelete = () => onDelete(user);
 

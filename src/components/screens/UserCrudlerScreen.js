@@ -18,6 +18,9 @@ export const UserCrudlerScreen = ({navigation}) => {
   {
     setUsers(users.filter((item) => item.UserID !== user.UserID));
   }
+  const handleModify = (updatedUser) => {
+    setUsers(users.map((user) => (user.UserID === updatedUser.UserID) ? updatedUser : user));
+  }
 
   const onAdd = (user) =>
   {
@@ -31,8 +34,14 @@ export const UserCrudlerScreen = ({navigation}) => {
     navigation.goBack();
   }
 
+  const onModify = (user) =>
+  {
+    handleModify(user);
+    navigation.popToTop();
+  }
 
-  const goToViewScreen = (user) => navigation.navigate("UserViewScreen", {user, onDelete});
+
+  const goToViewScreen = (user) => navigation.navigate("UserViewScreen", {user, onDelete, onModify});
   const goToAddScreen = () => navigation.navigate("UserAddScreen", {onAdd});
 
   // View ------------------------------

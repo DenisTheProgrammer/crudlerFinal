@@ -21,7 +21,6 @@ export const ModuleCrudlerScreen = ({navigation}) => {
   }
   const handleModify = (updatedModule) => {
     setModules(modules.map((module) => (module.ModuleID === updatedModule.ModuleID) ? updatedModule : module));
-    console.log(module)
   }
 
   const onAdd = (module) =>
