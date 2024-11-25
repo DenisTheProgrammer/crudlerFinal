@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, LogBox } from 'react-native';
 import Screen from "../layout/Screen.js";
 
 import initialUsers from "../../data/users";
@@ -9,6 +9,7 @@ import { useState } from 'react';
 
 export const UserCrudlerScreen = ({navigation}) => {
   // Initialisations -------------------
+  LogBox.ignoreLogs([`Non-serializable values were found in the navigation state`]);
 
   // State -----------------------------
   const [users, setUsers] = useState(initialUsers);

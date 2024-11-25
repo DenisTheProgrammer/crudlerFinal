@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, LogBox } from 'react-native';
 import Screen from "../layout/Screen.js";
 
 import initialModules from '../../data/modules.js';
@@ -9,6 +9,7 @@ import { useState } from 'react';
 
 export const ModuleCrudlerScreen = ({navigation}) => {
   // Initialisations -------------------
+  LogBox.ignoreLogs([`Non-serializable values were found in the navigation state`]);
 
   // State -----------------------------
   const [modules, setModules] = useState(initialModules);
