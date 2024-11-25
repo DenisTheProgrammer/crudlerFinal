@@ -32,9 +32,9 @@ const UserView = ({user, onDelete, onModify}) =>
                     {user.UserID} {user.UserFirstname} {user.UserLastname}
                 </Text>
                 <Text style = {styles.text}>Email: {user.UserEmail}</Text>
-                <Text style = {styles.text}>Role: {user.UserType}</Text>
+                <Text style = {styles.text}>Role: {user.UserUsertypeName}</Text>
                 <Text style = {styles.text}>
-                    {user.UserYear}{" "}
+                    {user.UserYearName}{" "}
                     <Text style = {styles.dimText}>(User Year)</Text>
                 </Text>
             </View>

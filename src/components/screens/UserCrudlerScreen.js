@@ -1,18 +1,19 @@
 import { StyleSheet, LogBox } from 'react-native';
 import Screen from "../layout/Screen.js";
 
-import initialUsers from "../../data/users";
 import UserList from "../entity/users/UserList.js";
 import { Button, ButtonTray } from '../UI/Button.js';
 import Icons from '../UI/Icons.js';
 import { useState } from 'react';
+import useLoad from "../API/useLoad.js";
 
 export const UserCrudlerScreen = ({navigation}) => {
   // Initialisations -------------------
   LogBox.ignoreLogs([`Non-serializable values were found in the navigation state`]);
+  const usersEndPoint = "https://softwarehub.uk/unibase/api/users";
 
   // State -----------------------------
-  const [users, setUsers] = useState(initialUsers);
+  const [users, setUsers, isLoading, loadUsers] = useLoad(usersEndPoint);
   // Handlers --------------------------
   const handleAdd = (user) => setUsers([...users, user]);
   const handleDelete = (user) =>
