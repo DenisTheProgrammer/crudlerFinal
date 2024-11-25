@@ -1,4 +1,4 @@
-import { StyleSheet, LogBox, Text } from 'react-native';
+import { StyleSheet, LogBox, Text, Alert } from 'react-native';
 import Screen from "../layout/Screen.js";
 
 import API from "../API/API.js";
@@ -16,32 +16,49 @@ export const ModuleCrudlerScreen = ({navigation}) => {
   const[modules, setModules, isLoading, loadModules ] = useLoad(modulesEndPoint);
 
   // Handlers --------------------------
-  const handleAdd = (module) => setModules([...modules, module]);
-  const handleDelete = (module) =>
+  const onDelete = async (module) => 
   {
-    setModules(modules.filter((item) => item.ModuleID !== module.ModuleID));
-  }
-  const handleModify = (updatedModule) => {
-    setModules(modules.map((module) => (module.ModuleID === updatedModule.ModuleID) ? updatedModule : module));
+    const deleteEndPoint = `${modulesEndPoint}/${module.ModuleID}`;
+    const result = await API.delete(deleteEndPoint, module);
+    if (result.isSuccess) 
+    {
+      loadModules(modulesEndPoint);
+      navigation.popToTop();
+    }
+    else
+    {
+      Alert.alert(result.message);
+    }
   }
 
-  const onAdd = (module) =>
+  const onAdd = async (module) => 
   {
-    handleAdd(module);
-    navigation.goBack();
-  };
-
-  const onDelete = (module) =>
-  {
-    handleDelete(module);
-    navigation.goBack();
-  };
-
-  const onModify = (module) =>
-  {
-    handleModify(module);
-    navigation.popToTop();
+    const result = await API.post(modulesEndPoint, module);
+    if (result.isSuccess) 
+    {
+      loadModules(modulesEndPoint);
+      navigation.popToTop();
+    }
+    else
+    {
+      Alert.alert(result.message);
+    }
   }
+
+  const onModify = async (module) => 
+  {
+    const putEndPoint = `${modulesEndPoint}/${module.ModuleID}`;
+    const result = await API.put(putEndPoint, module);
+    if (result.isSuccess) 
+    {
+      loadModules(modulesEndPoint);
+      navigation.popToTop();
+    }
+    else
+    {
+      Alert.alert(result.message);
+    }
+  }  
 
 
   const goToViewScreen = (module) => navigation.navigate("ModuleViewScreen", {module, onDelete, onModify});
