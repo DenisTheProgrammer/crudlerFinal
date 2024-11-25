@@ -21,9 +21,9 @@ const ModuleForm = ({originalModule, onSubmit, onCancel }) => {
     defaultModule.ModuleID = Math.floor(100000 + Math.random() * 900000);
     defaultModule.ModuleImageURL = "https://images.freeimages.com/images/small-previews/cf5/cellphone-1313194.jpg";
 
-    const yearsEndPoint = "https://softwarehub.uk/unibase/api/years";
+    const yearsEndPoint = "http://softwarehub.uk/unibase/api/years";
 
-    const staffEndPoint = "https://softwarehub.uk/unibase/api/users/staff";
+    const staffEndPoint = "http://softwarehub.uk/unibase/api/users/staff";
 
     const levels = [
         { label: "3 (Foundation)", value: 3 },
@@ -35,8 +35,8 @@ const ModuleForm = ({originalModule, onSubmit, onCancel }) => {
 
     // State -------------------------------------
     const [module, setModule] = useState(originalModule || defaultModule);
-    const [years, isYearsLoading] = useLoad(yearsEndPoint);
-    const [leaders, isLeadersLoading] = useLoad(staffEndPoint);
+    const [years, ,  isYearsLoading] = useLoad(yearsEndPoint);
+    const [leaders, ,  isLeadersLoading] = useLoad(staffEndPoint);
 
     //Handlers -----------------------------------
     const handleChange = (field, value) => setModule({...module, [field]:value});

@@ -51,7 +51,7 @@ const InputText = ({label, value, onChange}) => {
     );
 }
 
-const InputSelect = ({label, prompt, options, value, onChange}) => {
+const InputSelect = ({label, prompt, options, value, onChange, isLoading = false}) => {
     // Initialisations -------------------
     // State -----------------------------
     // Handlers --------------------------
@@ -59,21 +59,27 @@ const InputSelect = ({label, prompt, options, value, onChange}) => {
     return (
         <View style={styles.item}>
             <Text style={styles.itemLabel}>{label}</Text>
-            <Picker
-                mode = "dropdown"
-                selectedValue={value}
-                onValueChange={onChange}
-                style = {styles.itemPickerStyle}
-            >
-                <Picker.Item 
-                    label={prompt} 
-                    value={null}
-                    style = {styles.itemPickerPromptStyle}
-                />
-                {options.map((option, index) => (
-                    <Picker.Item key={index} label={option.label} value={option.value} />
-                ))}
-            </Picker>
+            {
+                isLoading
+                ?(<View style={styles.itemLoading}>
+                    <Text style={styles.itemLoadingText}>Loading Records...</Text>
+                    </View>)
+                :(<Picker
+                    mode = "dropdown"
+                    selectedValue={value}
+                    onValueChange={onChange}
+                    style = {styles.itemPickerStyle}
+                >
+                    <Picker.Item 
+                        label={prompt} 
+                        value={null}
+                        style = {styles.itemPickerPromptStyle}
+                    />
+                    {options.map((option, index) => (
+                        <Picker.Item key={index} label={option.label} value={option.value} />
+                    ))}
+                </Picker>
+            )}
         </View>
     );
 };
@@ -96,6 +102,16 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginBottom: 5,
     },
+    itemLoading: {
+        height: 50,
+        backgroundColor: "mistyrose",
+        justifyContent: "center",
+        paddingLeft: 10,
+      },
+      itemLoadingText: {
+        fontSize: 16,
+        color: "gray",
+      },
     itemTextInput: {
         height: 50,
         paddingLeft: 10,

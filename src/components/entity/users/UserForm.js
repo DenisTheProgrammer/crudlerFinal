@@ -38,8 +38,8 @@ const UserForm = ({originalUser, onSubmit, onCancel }) => {
     // State -------------------------------------
     const [user, setUser] = useState(originalUser || defaultUser);
 
-    const [users, isUsersLoading] = useLoad(typesEndPoint);
-    const [years, isYearsLoading] = useLoad(yearsEndPoint);
+    const [users, ,  isUsersLoading] = useLoad(typesEndPoint);
+    const [years, ,  isYearsLoading] = useLoad(yearsEndPoint);
 
     //Handlers -----------------------------------
     const handleChange = (field, value) => setUser({...user, [field]:value});
