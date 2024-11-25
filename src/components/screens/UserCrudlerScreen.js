@@ -1,10 +1,10 @@
-import { StyleSheet, LogBox } from 'react-native';
+import { StyleSheet, LogBox, Alert } from 'react-native';
 import Screen from "../layout/Screen.js";
+import API from '../API/API.js';
 
 import UserList from "../entity/users/UserList.js";
 import { Button, ButtonTray } from '../UI/Button.js';
 import Icons from '../UI/Icons.js';
-import { useState } from 'react';
 import useLoad from "../API/useLoad.js";
 
 export const UserCrudlerScreen = ({navigation}) => {
@@ -15,32 +15,50 @@ export const UserCrudlerScreen = ({navigation}) => {
   // State -----------------------------
   const [users, setUsers, isLoading, loadUsers] = useLoad(usersEndPoint);
   // Handlers --------------------------
-  const handleAdd = (user) => setUsers([...users, user]);
-  const handleDelete = (user) =>
+  const onDelete = async (user) => 
   {
-    setUsers(users.filter((item) => item.UserID !== user.UserID));
-  }
-  const handleModify = (updatedUser) => {
-    setUsers(users.map((user) => (user.UserID === updatedUser.UserID) ? updatedUser : user));
+    const deleteEndPoint = `${usersEndPoint}/${user.UserID}`;
+    const result = await API.delete(deleteEndPoint, user);
+    if (result.isSuccess) 
+    {
+      loadUsers(usersEndPoint);
+      navigation.popToTop();
+    }
+    else
+    {
+      Alert.alert(result.message);
+    }
   }
 
-  const onAdd = (user) =>
+  const onAdd = async (user) => 
   {
-    handleAdd(user);
-    navigation.goBack();
+    const result = await API.post(usersEndPoint, user);
+    
+    if (result.isSuccess) 
+    {
+      loadUsers(usersEndPoint);
+      navigation.popToTop();
+    }
+    else
+    {
+      Alert.alert(result.message);
+    }
   }
 
-  const onDelete = (user) =>
+  const onModify = async (user) => 
   {
-    handleDelete(user);
-    navigation.goBack();
-  }
-
-  const onModify = (user) =>
-  {
-    handleModify(user);
-    navigation.popToTop();
-  }
+    const putEndPoint = `${usersEndPoint}/${user.UserID}`;
+    const result = await API.put(putEndPoint, user);
+    if (result.isSuccess) 
+    {
+      loadUsers(usersEndPoint);
+      navigation.popToTop();
+    }
+    else
+    {
+      Alert.alert(result.message);
+    }
+  }  
 
 
   const goToViewScreen = (user) => navigation.navigate("UserViewScreen", {user, onDelete, onModify});

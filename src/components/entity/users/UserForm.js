@@ -10,9 +10,13 @@ const defaultUser =
     UserFirstname : null,
     UserLastname : null,
     UserEmail : null,
+    UserRegistered : 0,
+    UserLevel : null,
+    UserYearID: null,
+    UserUsertypeID: null,
     UserImageURL : null,
-    UserType : null,
-    UserYear : null,
+    UserUsertypeName : null,
+    UserYearName : null,
 }
 
 const UserForm = ({originalUser, onSubmit, onCancel }) => {
@@ -22,6 +26,14 @@ const UserForm = ({originalUser, onSubmit, onCancel }) => {
 
     const typesEndPoint = "http://softwarehub.uk/unibase/api/usertypes";
     const yearsEndPoint = "https://softwarehub.uk/unibase/api/years";
+
+    const levels = [
+        { value: 3, label: "3 (Foundation)" },
+        { value: 4, label: "4 (First Year)" },
+        { value: 5, label: "5 (Second Year)" },
+        { value: 6, label: "6 (Third Year)" },
+        { value: 7, label: "7 (Masters)" },
+    ];
 
     // State -------------------------------------
     const [user, setUser] = useState(originalUser || defaultUser);
@@ -72,19 +84,27 @@ const UserForm = ({originalUser, onSubmit, onCancel }) => {
             />
 
             <Form.InputSelect
+                label = "User Level"
+                prompt= "Select User Level ..."
+                options = {levels}
+                value = {user.UserLevel}
+                onChange = {(value)=> handleChange("UserLevel", value)}
+            />
+
+            <Form.InputSelect
                 label = "User Type"
                 prompt= "Select User Type ..."
                 options = {types}
-                value = {user.UserType}
-                onChange = {(value)=> handleChange("UserType", value)}
+                value = {user.UserUsertypeID}
+                onChange = {(value)=> handleChange("UserUsertypeID", value)}
             />
 
             <Form.InputSelect
                 label = "User Year"
                 prompt= "Select User Year ..."
                 options = {cohorts}
-                value = {user.UserYear}
-                onChange = {(value)=> handleChange("UserYear", value)}
+                value = {user.UserYearID}
+                onChange = {(value)=> handleChange("UserYearID", value)}
             />
            
 
