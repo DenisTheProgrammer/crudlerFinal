@@ -5,7 +5,7 @@ import API from "../API/API.js";
 import ModuleList from "../entity/modules/ModuleList.js";
 import { ButtonTray, Button } from '../UI/Button.js';
 import Icons from '../UI/Icons.js';
-import { useState, useEffect } from 'react';
+import useLoad from '../API/useLoad.js';
 
 export const ModuleCrudlerScreen = ({navigation}) => {
   // Initialisations -------------------
@@ -13,16 +13,7 @@ export const ModuleCrudlerScreen = ({navigation}) => {
   const modulesEndPoint = "https://softwarehub.uk/unibase/api/modules";
 
   // State -----------------------------
-  const [modules, setModules] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const loadModules = async(endpoint) => {
-    const response = await API.get(endpoint);
-    setIsLoading(false);
-    if(response.isSuccess) setModules(response.result);
-  };
-
-  useEffect(() => {loadModules(modulesEndPoint)}, []);
+  const[modules, setModules, isLoading, loadModules ] = useLoad(modulesEndPoint);
 
   // Handlers --------------------------
   const handleAdd = (module) => setModules([...modules, module]);
