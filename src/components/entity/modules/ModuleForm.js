@@ -21,9 +21,9 @@ const ModuleForm = ({originalModule, onSubmit, onCancel }) => {
     defaultModule.ModuleID = Math.floor(100000 + Math.random() * 900000);
     defaultModule.ModuleImageURL = "https://images.freeimages.com/images/small-previews/cf5/cellphone-1313194.jpg";
 
-    const yearsEndPoint = "http://softwarehub.uk/unibase/api/years";
+    const yearsEndPoint = "https://softwarehub.uk/unibase/api/years";
 
-    const staffEndPoint = "http://softwarehub.uk/unibase/api/users/staff";
+    const staffEndPoint = "https://softwarehub.uk/unibase/api/users/staff";
 
     const levels = [
         { label: "3 (Foundation)", value: 3 },

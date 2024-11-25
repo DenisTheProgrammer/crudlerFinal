@@ -24,7 +24,7 @@ const UserForm = ({originalUser, onSubmit, onCancel }) => {
     defaultUser.UserID = Math.floor(100 + Math.random() * 900);
     defaultUser.UserImageURL = 'https://images.generated.photos/1zzVOGo2BC7zlIbuqtT9E03KbcRrCFw0CeIkCRH-pQo/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTU2NTI4LmpwZw.jpg';
 
-    const typesEndPoint = "http://softwarehub.uk/unibase/api/usertypes";
+    const typesEndPoint = "https://softwarehub.uk/unibase/api/usertypes";
     const yearsEndPoint = "https://softwarehub.uk/unibase/api/years";
 
     const levels = [

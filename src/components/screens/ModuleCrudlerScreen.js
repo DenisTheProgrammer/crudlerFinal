@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, LogBox, Text, Alert, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, LogBox, Text, Alert, View, ScrollView } from 'react-native';
 import Screen from "../layout/Screen.js";
 
 import API from "../API/API.js";
@@ -66,21 +66,23 @@ export const ModuleCrudlerScreen = ({navigation}) => {
 
   // View ------------------------------
   return (
-    <Screen>
-      <View style = {styles.container}>
-        <ButtonTray>
-          <Button label = "Add" icon = {<Icons.Add/>} onClick = {goToAddScreen}/>
-        </ButtonTray>
-        {
-          isLoading && (
-            <View>
-              <Text>Retrieving records from {modulesEndPoint} ...</Text>
-              <ActivityIndicator size="large" />
-            </View>
-        )}
-        <ModuleList modules = {modules} onSelect={goToViewScreen}/>
-      </View>
-    </Screen>
+    <ScrollView>
+      <Screen>
+        <View style = {styles.container}>
+          <ButtonTray>
+            <Button label = "Add" icon = {<Icons.Add/>} onClick = {goToAddScreen}/>
+          </ButtonTray>
+          {
+            isLoading && (
+              <View>
+                <Text>Retrieving records from {modulesEndPoint} ...</Text>
+                <ActivityIndicator size="large" />
+              </View>
+          )}
+          <ModuleList modules = {modules} onSelect={goToViewScreen}/>
+        </View>
+      </Screen>
+    </ScrollView>
   );
 };
 
