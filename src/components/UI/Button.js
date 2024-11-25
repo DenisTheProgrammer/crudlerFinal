@@ -1,4 +1,5 @@
-import { Pressable,StyleSheet,Text, View } from "react-native";
+import { StyleSheet,Text, View } from "react-native";
+import Selector from "./Selector";
 
 export const Button = ({label, icon, onClick, styleLabel, styleButton}) => {
     // Initialisations -------------------
@@ -6,12 +7,16 @@ export const Button = ({label, icon, onClick, styleLabel, styleButton}) => {
     // Handlers --------------------------
     // View ------------------------------
     return (
-        <Pressable onPress={onClick} style={[styles.button, styleButton]}>
+        <Selector 
+        onPress = {onClick}
+        style = {[styles.button, styleButton]}
+        pressedStyle = {styles.pressedButton}
+        >
             {
                 icon ? icon : null //this returns the icon if the icon is provided, otherwie it returns null
             }
             <Text style={[styles.label, styleLabel]}>{label}</Text>
-        </Pressable>
+        </Selector>
     )
 
 };
@@ -51,4 +56,8 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
   },
+  pressedButton: {
+    backgroundColor: "azure",
+    elevation: 5,
+  }
 });
