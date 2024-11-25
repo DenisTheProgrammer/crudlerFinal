@@ -97,6 +97,7 @@ const UserForm = ({originalUser, onSubmit, onCancel }) => {
                 options = {types}
                 value = {user.UserUsertypeID}
                 onChange = {(value)=> handleChange("UserUsertypeID", value)}
+                isLoading = {isUsersLoading}
             />
 
             <Form.InputSelect
@@ -105,6 +106,7 @@ const UserForm = ({originalUser, onSubmit, onCancel }) => {
                 options = {cohorts}
                 value = {user.UserYearID}
                 onChange = {(value)=> handleChange("UserYearID", value)}
+                isLoading = {isYearsLoading}
             />
            
 
