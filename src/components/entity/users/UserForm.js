@@ -2,6 +2,7 @@ import { useState } from "react";
 import { StyleSheet,Text,TextInput,View } from "react-native";
 import Icons from "../../UI/Icons.js";
 import Form from "../../UI/Form.js";
+import useLoad from "../../API/useLoad.js";
 
 const defaultUser = 
 {
@@ -19,19 +20,14 @@ const UserForm = ({originalUser, onSubmit, onCancel }) => {
     defaultUser.UserID = Math.floor(100 + Math.random() * 900);
     defaultUser.UserImageURL = 'https://images.generated.photos/1zzVOGo2BC7zlIbuqtT9E03KbcRrCFw0CeIkCRH-pQo/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTU2NTI4LmpwZw.jpg';
 
-    const types = [
-        { label: "Staff", value: "Staff" },
-        { label: "Student", value: "Student" },
-    ];
-
-    const years = [
-        { label: "2022-23", value: "2022-23" },
-        { label: "2023-24", value: "2023-24" },
-        { label: "2024-25", value: "2024-25" },
-    ];
+    const typesEndPoint = "http://softwarehub.uk/unibase/api/usertypes";
+    const yearsEndPoint = "https://softwarehub.uk/unibase/api/years";
 
     // State -------------------------------------
     const [user, setUser] = useState(originalUser || defaultUser);
+
+    const [users, isUsersLoading] = useLoad(typesEndPoint);
+    const [years, isYearsLoading] = useLoad(yearsEndPoint);
 
     //Handlers -----------------------------------
     const handleChange = (field, value) => setUser({...user, [field]:value});
@@ -40,6 +36,9 @@ const UserForm = ({originalUser, onSubmit, onCancel }) => {
     //View ---------------------------------------
     const submitLabel = originalUser? "Modify" : "Add";
     const submitIcon = originalUser? <Icons.Edit/> : <Icons.Add/>;
+
+    const cohorts = years.map((year) => ({value: year.YearID, label: year.YearName}));
+    const types = users.map((user) => ({value: user.UsertypeID, label: user.UsertypeName}));
 
     return(
         <Form
@@ -83,7 +82,7 @@ const UserForm = ({originalUser, onSubmit, onCancel }) => {
             <Form.InputSelect
                 label = "User Year"
                 prompt= "Select User Year ..."
-                options = {years}
+                options = {cohorts}
                 value = {user.UserYear}
                 onChange = {(value)=> handleChange("UserYear", value)}
             />
